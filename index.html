@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opinião Premiada - Download do Aplicativo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+        }
+        .header {
+            background-color: #1E88E5;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+        .nav {
+            background-color: #212121;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .nav a {
+            margin: 0 15px;
+            color: #1E88E5;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background-color: #1E1E1E;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .app-header {
+            display: flex;
+            align-items: center;
+        }
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            margin-right: 20px;
+        }
+        .app-title {
+            font-size: 24px;
+            margin: 0;
+        }
+        .ratings {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .rating-stars {
+            color: #FFD700;
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        .reviews-count {
+            font-size: 14px;
+            color: #999;
+        }
+        .app-description {
+            margin-top: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .app-screenshots {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .screenshot {
+            width: 30%;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .download-button {
+            display: block;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .download-button a {
+            background-color: #1E88E5;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 18px;
+        }
+        .download-button a:hover {
+            background-color: #1565C0;
+        }
+        .additional-info {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #ccc;
+        }
+        .review-section {
+            margin-top: 40px;
+        }
+        .review {
+            border-top: 1px solid #333;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .review h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .review p {
+            margin: 5px 0;
+        }
+        .review .date {
+            font-size: 12px;
+            color: #666;
+        }
+        .review .likes {
+            font-size: 12px;
+            color: #1E88E5;
+        }
+        .review .like-count {
+            font-weight: bold;
+        }
+        .faq-section {
+            margin-top: 40px;
+        }
+        .faq {
+            margin-bottom: 20px;
+        }
+        .faq h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .faq p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #ccc;
+        }
+        .footer {
+            background-color: #212121;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40px;
+            color: #999;
+        }
+        .footer a {
+            color: #1E88E5;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .publish-survey {
+            background-color: #1E88E5;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 18px;
+            text-align: center;
+            display: inline-block;
+            margin: 20px 0;
+        }
+        .publish-survey:hover {
+            background-color: #1565C0;
+        }
+        .contact-form {
+            display: none;
+            background-color: #2c2c2c;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: #fff;
+        }
+        .contact-form button {
+            background-color: #1E88E5;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #1565C0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Opinião Premiada</h1>
+</div>
+
+<div class="nav">
+    <a href="#">Jogos</a>
+    <a href="#">Apps</a>
+    <a href="#">Filmes</a>
+    <a href="#">Livros</a>
+    <a href="#">Crianças</a>
+</div>
+
+<div class="container">
+    <div class="app-header">
+        <img src="app-icon.png" alt="Opinião Premiada" class="app-icon">
+        <div>
+            <h2 class="app-title">Opinião Premiada</h2>
+            <div class="ratings">
+                <div class="rating-stars">★★★☆☆</div>
+                <div class="reviews-count">3,6 mi avaliações</div>
+            </div>
+        </div>
+    </div>
+    <p class="app-description">
+        O Opinião Premiada é um aplicativo que permite que você compartilhe suas opiniões e seja recompensado por isso. Participe de pesquisas, responda questionários e ganhe prêmios incríveis. Com uma interface amigável e fácil de usar, o Opinião Premiada é a maneira perfeita de transformar suas opiniões em recompensas.
+    </p>
+    <div class="app-screenshots">
+        <img src="screenshot1.png" alt="Screenshot 1" class="screenshot">
+        <img src="screenshot2.png" alt="Screenshot 2" class="screenshot">
+        <img src="screenshot3.png" alt="Screenshot 3" class="screenshot">
+        <img src="screenshot1.png" alt="Screenshot 4" class="screenshot">
+        <img src="screenshot2.png" alt="Screenshot 5" class="screenshot">
+    </div>
+    <div class="download-button">
+        <a href="download-link.apk">Baixar Opinião Premiada</a>
+    </div>
+    <div class="additional-info">
+        <p>Versão: 1.0.0</p>
+        <p>Atualizado em: 23 de julho de 2024</p>
+        <p>Tamanho: 25MB</p>
+        <p>Requer Android 5.0 ou superior</p>
+    </div>
+    <div class="additional-info">
+        <h3>O que há de novo</h3>
+        <p>• Agora disponível nestes países: Colômbia, Finlândia, Hungria, África do Sul e Vietnã.</p>
+    </div>
+    <div class="additional-info">
+        <h3>Segurança dos dados</h3>
+        <p>Sua segurança começa com o entendimento de como os desenvolvedores coletam e compartilham seus dados. As práticas de segurança e privacidade de dados podem variar de acordo com o uso, a região e a idade. O desenvolvedor forneceu as informações a seguir, que podem ser atualizadas ao longo do tempo.</p>
+        <ul>
+            <li>Os dados não são compartilhados com terceiros</li>
+            <li>Este app pode coletar estes tipos de dados: Local, Informações pessoais e mais 7</li>
+            <li>Os dados são criptografados em trânsito</li>
+            <li>Você pode solicitar a exclusão dos dados</li>
+        </ul>
+    </div>
+    <div class="review-section">
+        <h3>Avaliar este app</h3>
+        <p>Dê sua opinião.</p>
+        <div class="review">
+            <h3>Gabriela Alves</h3>
+            <p class="date">22 de abril de 2024</p>
+            <p>App fácil de mexer. Já rendeu muito mais pesquisas, hoje em dia são poucas e de pouquíssimos centavos, as vezes de 0,07, parece até piada... Deixem a localização sempre ativada para ter o máximo de pesquisas possíveis (mesmo que ainda sejam poucas). As vezes demora atualizar o saldo também. Antes tinha a possibilidade de o saldo ir pra conta PayPal e resgatar como dinheiro, mas o infelizmente acabou.</p>
+            <p class="likes">Essa avaliação foi marcada como útil por <span class="like-count">186 pessoas</span></p>
+        </div>
+        <div class="review">
+            <h3>Patricia Priscila</h3>
+            <p class="date">23 de fevereiro de 2024</p>
+            <p>A ideia é boa, mas a quantidade de pesquisas é muito pequena. Aparece uma pesquisa ou duas, no máximo, por mês! E as recompensas são de centavos por pesquisa. Se fossem várias pesquisas de centavos ou então poucas pesquisas de pelo menos 1 real até valeria a pena, mas assim, do jeito que está, não compensa deixar instalado o app.</p>
+            <p class="likes">Essa avaliação foi marcada como útil por <span class="like-count">925 pessoas</span></p>
+        </div>
+        <div class="review">
+            <h3>Um usuário</h3>
+            <p class="date">24 de setembro de 2019</p>
+            <p>Decepção define. No começo é ótimo, as pesquisas são frequentes e os valores liberados são ótimos, porém, nada é perfeito.Conforme você vai respondendo, o tempo entre uma pesquisa e a próxima vai ficando cada vez maior e os valores diminuindo, até que as pesquisas simplesmente param de chegar. Resumindo, só instale o aplicativo se você tiver "paciência de Jó".</p>
+            <p class="likes">Essa avaliação foi marcada como útil por <span class="like-count">1.899 pessoas</span></p>
+        </div>
+    </div>
+    <div class="faq-section">
+        <h3>Perguntas Frequentes</h3>
+        <div class="faq">
+            <h3>Como funciona o Opinião Premiada?</h3>
+            <p>O Opinião Premiada permite que você participe de pesquisas e responda questionários para ganhar prêmios. Você receberá notificações sempre que uma nova pesquisa estiver disponível.</p>
+        </div>
+        <div class="faq">
+            <h3>É seguro usar o aplicativo?</h3>
+            <p>Sim, o Opinião Premiada usa criptografia para proteger seus dados. Suas informações não são compartilhadas com terceiros sem sua permissão.</p>
+        </div>
+        <div class="faq">
+            <h3>Como posso ganhar prêmios?</h3>
+            <p>Ao responder pesquisas, você acumula pontos que podem ser trocados por prêmios. Quanto mais você participa, mais pontos você ganha.</p>
+        </div>
+        <div class="faq">
+            <h3>O que faço se tiver problemas com o app?</h3>
+            <p>Se você encontrar algum problema, pode entrar em contato com o suporte do app através do nosso site ou pelo email de suporte fornecido no app.</p>
+        </div>
+    </div>
+    <div class="additional-info">
+        <h3>Sobre este app</h3>
+        <p>Participe de pesquisas rápidas e ganhe crédito com o Opinião Premiada, um aplicativo criado para recompensar suas opiniões.</p>
+        <p>É fácil dar os primeiros passos. Faça o download do aplicativo e responda a perguntas básicas sobre você. Enviaremos pesquisas aproximadamente uma vez por semana, embora a frequência possa variar. Você receberá uma notificação no seu celular quando uma pesquisa curta e relevante estiver disponível. Receba até R$ 3,00 em créditos ao respondê-las. As perguntas variam de "Qual logotipo é melhor?" e "Qual promoção é mais atraente?" até "Quando você planeja viajar novamente?"</p>
+    </div>
+    <div class="additional-info">
+        <p>Atualizado em: 23 de jul. de 2024</p>
+        <a href="#" style="color: #1E88E5;">Sinalizar como impróprio</a> | <a href="#" style="color: #1E88E5;">Suporte do app</a>
+    </div>
+    <div class="publish-survey" onclick="showContactForm()">Deseja publicar uma pesquisa com a gente? Nos chame!</div>
+    <div class="contact-form" id="contact-form">
+        <h3>Contato para Publicação de Pesquisa</h3>
+        <form>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Mensagem:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 Opinião Premiada. Todos os direitos reservados.</p>
+    <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Serviço</a> | <a href="#">Contato</a></p>
+</div>
+
+<script>
+    function showContactForm() {
+        document.getElementById('contact-form').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
