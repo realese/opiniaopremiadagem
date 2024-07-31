@@ -73,13 +73,12 @@
         }
         .app-screenshots {
             display: flex;
-            justify-content: space-between;
+            overflow-x: scroll;
             margin-top: 20px;
-            flex-wrap: wrap;
         }
         .screenshot {
-            width: 30%;
-            margin-bottom: 10px;
+            min-width: 30%;
+            margin-right: 10px;
             border-radius: 8px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
@@ -207,6 +206,15 @@
         .contact-form button:hover {
             background-color: #1565C0;
         }
+        .banner {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .banner img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -224,8 +232,14 @@
 </div>
 
 <div class="container">
+
+    <!-- Banner Section -->
+    <div class="banner">
+        <img src="img4.jpg" alt="Banner Promocional">
+    </div>
+
     <div class="app-header">
-        <img src="img4.jpg" alt="Opinião Premiada" class="app-icon">
+        <img src="imgppps.jpg" alt="Opinião Premiada" class="app-icon">
         <div>
             <h2 class="app-title">Opinião Premiada</h2>
             <div class="ratings">
@@ -241,11 +255,10 @@
         <img src="img1.jpg" alt="Screenshot 1" class="screenshot">
         <img src="img2.jpg" alt="Screenshot 2" class="screenshot">
         <img src="img3.jpg" alt="Screenshot 3" class="screenshot">
-        <img src="" alt="Screenshot 4" class="screenshot">
-        <img src="img5.jpg" alt="Screenshot 5" class="screenshot">
+        <img src="img5.jpg" alt="Screenshot 4" class="screenshot">
     </div>
     <div class="download-button">
-        <a href="download-link.apk">Baixar Opinião Premiada</a>
+        <a href="OpiniãoPremiada-3.assinado.apk">Baixar Opinião Premiada</a>
     </div>
     <div class="additional-info">
         <p>Versão: 1.0.0</p>
