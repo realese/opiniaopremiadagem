@@ -214,14 +214,135 @@
             max-width: 100%;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+        }/* Chat Styles */
+#chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 400px;
+    height: 500px;
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+    overflow: hidden;
+}
+#chat-header {
+    padding: 15px;
+    background-color: #007BFF;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#chat-body {
+    padding: 15px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #e5e7eb;
+}
+#chat-footer {
+    padding: 10px;
+    background-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+#chat-footer input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: border 0.3s;
+}
+#chat-footer input:focus {
+    border-color: #007BFF;
+}
+#chat-footer button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#chat-footer button:hover {
+    background-color: #0056b3;
+}
+.user-message, .bot-message {
+    padding: 10px;
+    border-radius: 20px;
+    margin: 5px 0;
+    max-width: 80%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s;
+}
+.user-message {
+    align-self: flex-end;
+    background-color: #dcf8c6;
+}
+.bot-message {
+    align-self: flex-start;
+    background-color: #ffffff;
+    color: #000000; /* Adicione esta linha */
+}
+.bot-options {
+    display: block;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 5px 0;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s, transform 0.3s;
+    color: #000000; /* Adicione esta linha */
+}
+.bot-options:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.02);
+}
+#open-chat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+}
+#open-chat:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+.typing {
+    font-style: italic;
+    color: grey;
+    margin: 5px 0;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
     </style>
 </head>
 <body>
-
-<div class="header">
-    <h1>Opinião Premiada</h1>
-</div>
 
 
 
@@ -385,9 +506,120 @@
     <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Serviço</a> | <a href="#">Contato</a></p>
 </div>
 
+<!-- Chat HTML -->
+<div id="chat-container">
+    <div id="chat-header">
+        <h3>Ajuda</h3>
+        <button id="close-chat">X</button>
+    </div>
+    <div id="chat-body">
+        <div id="chat-content">
+            <p class="bot-message">Aguarde um minuto, você é o número <span id="queue-number"></span> na fila.</p>
+        </div>
+    </div>
+    <div id="chat-footer" class="hidden">
+        <input type="text" id="user-input" placeholder="Digite o número da sua pergunta...">
+        <button id="send-btn">Enviar</button>
+    </div>
+</div>
+<button id="open-chat">Ajuda</button>
+
 <script>
     function showContactForm() {
         document.getElementById('contact-form').style.display = 'block';
+    }
+
+    const chatContainer = document.getElementById('chat-container');
+    const openChatBtn = document.getElementById('open-chat');
+    const closeChatBtn = document.getElementById('close-chat');
+    const sendBtn = document.getElementById('send-btn');
+    const userInput = document.getElementById('user-input');
+    const chatContent = document.getElementById('chat-content');
+    const chatFooter = document.getElementById('chat-footer');
+    const queueNumber = document.getElementById('queue-number');
+
+    openChatBtn.addEventListener('click', function() {
+        chatContainer.style.display = 'flex';
+        const randomQueueNumber = Math.floor(Math.random() * 10) + 1;
+        queueNumber.textContent = randomQueueNumber;
+
+        setTimeout(() => {
+            const helloMessage = document.createElement('p');
+            helloMessage.textContent = 'Olá! Como posso te ajudar?';
+            helloMessage.className = 'bot-message';
+            chatContent.appendChild(helloMessage);
+
+            setTimeout(() => {
+                showOptions();
+                chatFooter.classList.remove('hidden');
+            }, 5000);
+        }, 10000);
+    });
+
+    closeChatBtn.addEventListener('click', function() {
+        chatContainer.style.display = 'none';
+    });
+
+    const responses = {
+        "1": "O saque pode levar até 3 dias úteis para ser processado.",
+        "2": "O tempo para uma nova pesquisa aparecer depende do perfil do usuário.",
+        "3": "A aprovação da conta geralmente é concluída em até um dia útil.",
+        "4": "Não é possível redefinir a senha, pois o login é realizado através do Google.",
+        "5": "Para acessar seu histórico de saques e pesquisas, clique nos três pontinhos ao lado e selecione 'Histórico'.",
+        "6": "Para entrar em contato com o suporte, clique nos três pontinhos ao lado e selecione 'Suporte'."
+    };
+
+    sendBtn.addEventListener('click', function() {
+        const userText = userInput.value.trim();
+        if (userText === '') return;
+
+        const userMessage = document.createElement('p');
+        userMessage.textContent = userText;
+        userMessage.className = 'user-message';
+        chatContent.appendChild(userMessage);
+
+        userInput.value = '';
+
+        const typingElement = document.createElement('p');
+        typingElement.className = 'typing';
+        typingElement.textContent = 'Chatbot está digitando...';
+        chatContent.appendChild(typingElement);
+
+        setTimeout(() => {
+            typingElement.remove();
+            const responseElement = document.createElement('p');
+            responseElement.className = 'bot-message';
+
+            if (responses[userText]) {
+                responseElement.innerHTML = `<b>Resposta:</b> ${responses[userText]}`;
+            } else {
+                responseElement.innerHTML = `<b>Resposta:</b> Não entendi. Pode reformular sua pergunta?`;
+            }
+            chatContent.appendChild(responseElement);
+            chatContent.scrollTop = chatContent.scrollHeight;
+
+            showOptions();
+        }, 3000);
+    });
+
+    userInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendBtn.click();
+        }
+    });
+
+    function showOptions() {
+        const optionsMessage = document.createElement('div');
+        optionsMessage.innerHTML = `
+            <div class="bot-options"><b>1.</b> Quanto tempo demora para o saque cair?</div>
+            <div class="bot-options"><b>2.</b> Quanto tempo demora para aparecer uma nova pesquisa?</div>
+            <div class="bot-options"><b>3.</b> Quanto tempo leva para aprovar a conta?</div>
+            <div class="bot-options"><b>4.</b> Como posso redefinir minha senha?</div>
+            <div class="bot-options"><b>5.</b> Onde encontro meu histórico de pesquisas?</div>
+            <div class="bot-options"><b>6.</b> Como entrar em contato com o suporte?</div>
+        `;
+        chatContent.appendChild(optionsMessage);
+        chatContent.scrollTop = chatContent.scrollHeight;
     }
 </script>
 
